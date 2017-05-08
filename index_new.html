@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0016)http://localhost -->
+<html>
+
+  <head>
+
+    <meta name="google" value="notranslate" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>White & Case eLearning</title>
+
+    <style>
+      html,
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+        width: 100%;
+        height: 100%;
+      }
+
+      #player {
+        background: #000;
+        padding: 5px;
+        width: 760px;
+        /*this should equal the width of the video you're using*/
+        margin: 0 auto;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+      }
+
+      #player video {
+        width: 500px;
+        /*this will change the width of the video*/
+      }
+      /*below is the styling for the playlist*/
+
+      #playlist {
+        background: #FFFFFF;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 250px;
+        height: 280px;
+      }
+
+      #playlist h1 {
+        font: 15pt Arial, Helvetica, sans-serif;
+        color: #0099CC;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px 10px;
+        margin: 0;
+      }
+
+      #playlist h2 {
+        font: 12pt Arial, Helvetica, sans-serif;
+        color: #000000;
+        /*font-weight: bold;*/
+        padding: 5px 12px 10px;
+        margin: 0;
+      }
+
+      #playlist a {
+        color: #000000;
+        background: #FFFFFF;
+        padding: 5px 5px;
+        text-decoration: none;
+      }
+
+      #playlist a:hover {
+        text-decoration: underline;
+        /*background: #414141;*/
+        color: #0099CC;
+        text-decoration: underline;
+      }
+    </style>
+
+
+  </head>
+
+  <body>
+    <div id="player">
+      <table>
+        <tr>
+          <td>
+            <div id="playlist">
+              <h1>Essential Videos for your Daily Work</h1>
+              <p/>
+              <h2><a href="http://bss/Technology/Training/videos/iManage_MC/clientcentric_intro/clientcentric_intro.mp4">Review of iManage Training</a></h2>
+              <h2><a href="http://bss/Technology/Training/videos/DTE_Axiom/ht_dte_create_entries/ht_dte_create_entries.mp4">Enter & Release Time</a></h2>
+              <h2><a href="http://bss/Technology/Training/videos/EAAR/ht_EAAR_Availability.mp4">Track Availability with EAAR</a></h2>
+              <h2><a href="http://bss/Technology/Training/videos/imanage_mc/HT_%20Searching%20for%20Documents/HT_%20Searching%20for%20Documents.mp4">Search for Documents</a></h2>
+              <h2><a href="http://bss/Technology/Training/videos/Word/ht_Correspondence_EN/ht_Correspondence_EN.mp4">Create Letters & Memos</a></h2>
+              <h2><a href="http://bss/Technology/Training/videos/Outlook/tip_calendar_scheduling/tip_calendar_scheduling.mp4">Schedule Outlook Meetings</a></h2>
+              <p/>
+              <p/>
+            </div>
+          </td>
+          <td>
+            <video controls="controls" width="500" height="300" preload="auto" poster="http://bss/Technology/Training/videos/iManage_MC/clientcentric_intro/clientcentric_intro_First_Frame.png">
+      <source src="http://bss/Technology/Training/videos/iManage_MC/clientcentric_intro/clientcentric_intro.mp4" type="video/mp4" />
+   </video></td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      //Ensure all links in the div "#player" act in the same way:
+      var video_playlist = document.getElementById('player');
+      var links = video_playlist.getElementsByTagName('a');
+      for (var i = 0; i < links.length; i++) {
+        links[i].onclick = handler;
+      };
+      //Give functionality to the links:
+      function handler(e) {
+        e.preventDefault(); //Prevents default action of links going directly to the source file
+        videotarget = this.getAttribute('href'); //looks at the filename in the link's href attribute
+        filename = videotarget.substr(0, videotarget.lastIndexOf('.')) || videotarget; //Splits the filename and takes everything before the ".", giving us just name without the extension
+        video = document.querySelector('#player video'); //Finds div #player and video
+        video.removeAttribute('poster'); //Removes the poster attribute in the video tag
+        source = document.querySelectorAll('#player video source'); //Finds source elements inside the video tag
+        source[0].src = filename + '.mp4'; //defines the MP4 source
+        video.load(); //Loads video when video is selected
+        video.play(); //Plays video automatically
+      };
+    </script>
+  </body>
+
+</html>
